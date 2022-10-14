@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('items_status', function (Blueprint $table) {
+        Schema::create('items_statuses', function (Blueprint $table) {
             $table->id('item_status_id');
             $table->string('description')->index();
             $table->timestamps();
