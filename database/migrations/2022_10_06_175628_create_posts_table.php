@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id('post_id');
-            $table->integer('user_id')->unsigned()->nullable()->index();
+            $table->foreignId('user_id')->constraint()->onDelete('cascade');
             $table->string('title');
-            $table->text('content');
+            $table->text('post_image')->nullable();
+            $table->text('body');
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('is_admin');
         });
     }
 

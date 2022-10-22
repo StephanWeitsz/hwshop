@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateContactUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('item_statuses', function (Blueprint $table) {
-            $table->id('item_status_id');
-            $table->string('description')->index();
+        Schema::create('contact_user', function (Blueprint $table) {
+            $table->foreignId('contact_id')->constraine();
+            $table->foreignId('user_id')->constraine();
+            //$table->foreignId('contact_type_id')->references('contact_type_id')->on('contact_types');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_statuses');
+        Schema::dropIfExists('contact_user');
     }
-};
+}

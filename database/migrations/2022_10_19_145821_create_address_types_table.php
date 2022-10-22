@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateAddressTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('addresses', function (Blueprint $table) {
-            $table->id('address_id');
-            $table->string('line1');
-            $table->string('line2');
-            $table->string('line3');
-            $table->string('line4');
-            $table->string('postalcode');
+        Schema::create('address_types', function (Blueprint $table) {
+            $table->id('address_type_id');
+            $table->string('name');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('addresses');
+        Schema::dropIfExists('address_types');
     }
-};
+}

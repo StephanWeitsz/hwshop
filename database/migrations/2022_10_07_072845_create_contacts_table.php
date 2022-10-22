@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id('contact_id');
-            $table->integer('user_id')->unsigned()->nullable()->index();
-            $table->integer('contact_type_id')->unsigned()->nullable()->index();
             $table->string('number');
             $table->timestamps();
             $table->softDeletes();

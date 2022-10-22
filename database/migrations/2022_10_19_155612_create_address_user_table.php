@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateAddressUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('item_statuses', function (Blueprint $table) {
-            $table->id('item_status_id');
-            $table->string('description')->index();
+        Schema::create('address_user', function (Blueprint $table) {
+            $table->foreignId('address_id')->constraine();
+            $table->foreignId('user_id')->constraine();
+            //$table->foreignId('address_type_id')->references('address_type_id')->on('address_types');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_statuses');
+        Schema::dropIfExists('address_user');
     }
-};
+}

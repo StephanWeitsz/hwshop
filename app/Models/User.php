@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'user_id';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,7 +22,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'avatar',
         'password',
+        'note',
+        'isAdmin'
     ];
 
     /**
@@ -41,4 +46,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function posts() {
+	    return $this->hasMany(Post::class, 'user_id');
+    }
+
+    public function address() {
+        return $this->belongsToMany(Address::class, 'address_user', 'user_id', 'address_id')
+            ->withTimestamps()
+            ->withPivot(['name']);
+    }
+
+    public function contact() {
+	    return $this->belongsToMany(Contact::class, 'contact_user', 'user_id', 'contact_id')
+            ->withTimestamps()
+            ->withPivot(['number']);
+    }
+
+    public function roles() {
+	    return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id')
+            ->withTimestamp();
+    }
+
+    public function images() {
+	    return $this->morphMany(Image::class, 'imageable', 'imageable_type', 'imageable_id', 'image_id');
+        //return $this->morphMany(Image::class, 'imageable', 'imageable_id', 'imageable_type', 'image_id');
+    }
 }
