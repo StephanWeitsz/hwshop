@@ -14,11 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('role_user', function (Blueprint $table) {
-            $table->id('role_user_id');
-            $table->integer('user_id')->unsigned()->nullable()->index();
-            $table->integer('role_id')->unsigned()->nullable()->index();
+            $table->primary(['user_id', 'role_id']);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

@@ -9,8 +9,6 @@ class Address extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'address_id';
-
     protected $fillable = [
         'line1',
         'line2',
@@ -20,6 +18,6 @@ class Address extends Model
     ];
 
     public function user() {
-        return $this->belongsToMany(User::class, 'user_id')->using(AddressUser::class);
+        return $this->belongsToMany(User::class)->using(AddressUser::class);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -12,29 +13,24 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        //$posts = auth()->user()->posts()->paginate(5);
+        $posts = auth()->user()->posts;
+        return view('admin.posts.index', ['posts'=> $posts]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    public function all() {
+        $posts = Post::all();
+        return view('admin.posts.index', ['posts'=> $posts]);
+    }
+
+    public function create() {
+        $this->authorize('create', Post::class);
         return view('admin.posts.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+        $this->authorize('create', Post::class);
         $inputs = request()->validate([
             'title'=> 'required|min:8|max:255',
             'post_image'=> 'file',
@@ -46,51 +42,47 @@ class PostController extends Controller
         }
 
         auth()->user()->posts()->create($inputs);
-        return back();
+        Session::flash('post_create_message','Post with title was created : ' . $inputs['title']);
+        return redirect()->route('post.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Post $post)
-    {
+    public function show(Post $post) {
         return view('post', ['post'=>$post]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function edit(Post $post) {
+        $this->authorize('view', $post);
+        return view('admin.posts.edit', ['post'=> $post]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Post $post) {
+        $inputs = request()->validate([
+            'title'=> 'required|min:8|max:255',
+            'post_image'=> 'file',
+            'body'=> 'required'
+        ]);
+
+        if(request('post_image')) {
+            $inputs['post_image'] = request('post_image')->store('images');
+            $post->post_image = $inputs['post_image'];
+        }
+
+        $post->title = $inputs['title'];
+        $post->body = $inputs['body'];
+
+        $this->authorize('update', $post);
+        $post->save();
+
+        Session::flash('post_update_message','Post ' . $post->id . ' updated');
+        return redirect()->route('post.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Post $post) {
+
+        $this->authorize('delete', $post);
+
+        $post->delete();
+        Session::flash('post_delete_message','Post ' . $post->id . ' was deleted');
+        return back();
     }
 }

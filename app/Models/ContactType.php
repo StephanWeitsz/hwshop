@@ -9,13 +9,11 @@ class ContactType extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'contact_type_id';
-
     protected $fillable = [
         'name',
     ];
 
     public function contact() {
-        return $this->belongsTo(contact::class, );
+        return $this->belongsTo(contact::class);
     }
 }

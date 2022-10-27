@@ -9,13 +9,25 @@ class Role extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'role_id';
-
     protected $fillable = [
         'name',
+        'slug'
     ];
 
-    public function user() {
-        return $this->belongsToMany('App\User');
+    public function permissions() {
+        return $this->belongsToMany(Permission::class);
+    }
+
+    public function users() {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function roleHasPermission($permission_name) {
+        foreach($this->permissions as $permission) {
+            if($permission_name == $permission->name) {
+                return true;
+            }
+        }
+        return false;
     }
 }

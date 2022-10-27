@@ -9,16 +9,16 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'post_id';
-
     protected $fillable = [
         'title',
         'post_image',
         'body',
     ];
 
+
+
     public function user() {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     /*
@@ -30,4 +30,17 @@ class Post extends Model
         return $this->morphToMany('App\Tag', 'tagable');
     }
     */
+
+    //public function setPostImageAttribute($value) {
+        //$this->attributes['post_image'] = asset($value);
+    //} 
+
+    public function getPostImageAttribute($value) {
+        if(strpos($value, 'https://') !== false || strpos('$value', 'http://') !== false) {
+            return asset($value);
+        }
+        else {
+            return asset('storage/' . $value);
+        }
+    } 
 }

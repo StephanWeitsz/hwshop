@@ -9,8 +9,6 @@ class ItemStatus extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'order_status_id';
-
     protected $fillable = [
         'description',
     ];

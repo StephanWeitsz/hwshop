@@ -1,8 +1,9 @@
 <x-admin-master>
     @section('content')
-        <h1>Create Post</h1>
-        <form method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
+        <h1>Edit Post</h1>
+        <form method="post" action="{{route('post.update', $post->id)}}" enctype="multipart/form-data">
             @csrf
+            @method('PATCH')
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text"
@@ -10,8 +11,12 @@
                         class="form-control"
                         id="title"
                         aria-describedby=""
-                        placeholder="Enter title">
+                        placeholder="Enter title"
+                        value="{{$post->title}}">
             </div>
+
+            <div><img height="100px" src="{{$post->post_image}}" alt=""></div>
+
             <div class="form-group">
                 <label for="file">File</label>
                 <input type="file"
@@ -22,13 +27,13 @@
 
             <div class="form-group">
                 <textarea name="body"
-                            class="form-control"
-                            id="body"
-                            cols="30"
-                            rows="10"></textarea>
+                          class="form-control"
+                          id="body"
+                          cols="30"
+                          rows="10">{{$post->body}}</textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     @endsection
 </x-admin-master>

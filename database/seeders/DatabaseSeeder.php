@@ -15,13 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->truncate();
+        //DB::table('users')->truncate();
         DB::table('posts')->truncate();
-        DB::table('addresses')->truncate();
-        DB::table('contacts')->truncate();
+        //DB::table('addresses')->truncate();
+        //DB::table('contacts')->truncate();
         
         User::factory()
-            ->count(10)
+            ->count(50)
             ->hasPosts(2)
             ->create();
     }
