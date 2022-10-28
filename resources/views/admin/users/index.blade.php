@@ -48,16 +48,16 @@
                       <td>
                         <img height="50px" src="{{$user->avatar}}" alt="">
                       </td>
-                      <td><a href="#">{{$user->username}}</a></td>
+                      <td><a href="{{route('user.profile.show', $user)}}">{{$user->username}}</a></td>
                       <td>{{$user->name}}</td>
                       <td>{{$user->created_at->diffForHumans()}}</td>
                       <td>{{$user->updated_at->diffForHumans()}}</td>
                       <td>
                         @can('view', $user)
-                          <form method="post" action="{{route('user.destroy', $user->id)}}" enctype="multipart/form-data">
+                          <form method="post" action="{{route('user.destroy', $user->id)}}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button class="btn btn-danger">Delete</button>
                           </form>
                         @endcan
                       </td>
@@ -69,11 +69,6 @@
           </div>
         </div>
 
-        <div class="d-flex">
-          <div class="mx-auto">
-            {{--$users->links()--}}
-          </div>      
-        </div>
     @endsection
 
     @section('scripts')

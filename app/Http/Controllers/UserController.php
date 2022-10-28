@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -18,8 +19,13 @@ class UserController extends Controller
     }
 
     public function show(User $user) {
-        return view('admin.users.profile', ['user'=>$user]);
+        return view('admin.users.profile', [
+            'user'=>$user,
+            'roles'=>Role::all()
+        ]);
     }
+
+
 
     public function update(User $user) {
         $inputs = request()->validate([
@@ -40,6 +46,16 @@ class UserController extends Controller
         $user->update($inputs);
         Session::flash('user_update_message', 'User ' . $user->id . ' was updated');
         return back();
+    }
+
+    public function attach(User $user) {
+        $user->roles()->attach(request('role'));
+        return back();     
+    }
+
+    public function detach(User $user) {
+        $user->roles()->detach(request('role'));
+        return back();     
     }
 
     public function destroy(User $user) {
