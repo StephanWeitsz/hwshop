@@ -53,7 +53,7 @@
                       <td>{{$post->created_at->diffForHumans()}}</td>
                       <td>{{$post->updated_at->diffForHumans()}}</td>
                       <td>
-                        @can('view', $post)
+                        @can('delete', $post)
                           <form method="post" action="{{route('post.destroy', $post->id)}}" enctype="multipart/form-data">
                             @csrf
                             @method('DELETE')

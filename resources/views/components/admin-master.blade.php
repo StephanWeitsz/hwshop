@@ -57,11 +57,23 @@
 
       @if (auth()->user()->userHasRole('Admin'))
         <!-- Nav Item - Admin Users Collapse Menu -->
-        <x-admin.sidebar.admin-sidebar-users-links></x-admin.sidebar.admin-sidebar-users-links>
+        <x-admin.sidebar.users-links></x-admin.sidebar.users-links>
       @endif
       
-      <!-- Nav Item - Admin Post Collapse Menu -->
-      <x-admin.sidebar.admin-sidebar-posts-links></x-admin.sidebar.admin-sidebar-posts-links>
+      <!-- Nav Item - Admin Posts Collapse Menu -->
+      <x-admin.sidebar.posts-links></x-admin.sidebar.posts-links>
+
+      @if (auth()->user()->userHasRole('Admin'))
+        <!-- Nav Item - Admin Products Collapse Menu -->
+        <x-admin.sidebar.products-links></x-admin.sidebar.products-links>
+
+        <!-- Nav Item - Admin Orders Collapse Menu -->
+        <x-admin.sidebar.orders-links></x-admin.sidebar.orders-links>
+
+        <!-- Nav Item - Admin Authorizations Collapse Menu -->
+        <x-admin.sidebar.authorization-links></x-admin.sidebar.authorization-links>
+      @endif
+      
       
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
@@ -290,7 +302,7 @@
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
-            <x-admin.top-nav.admin-top_navbar-user-information></x-admin.top-nav.admin-top_navbar-user-information>
+            <x-admin.top-nav.user-information></x-admin.top-nav.user-information>
           </ul>
 
         </nav>

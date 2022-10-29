@@ -30,7 +30,12 @@ class PostPolicy
      */
     public function view(User $user, Post $post)
     {
-        return $user->id === $post->id;
+        if($user->userHasRole('admin')) {
+            return true;
+        }
+        else {
+            return $user->id === $post->user_id;
+        }
     }
 
     /**
@@ -53,7 +58,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $user->id === $post->id;
+        return $user->id === $post->user_id;
     }
 
     /**
@@ -65,7 +70,12 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return $user->id === $post->id;
+        if($user->userHasRole('admin')) {
+            return true;
+        }
+        else {
+            return $user->id === $post->user_id;
+        }
     }
 
     /**

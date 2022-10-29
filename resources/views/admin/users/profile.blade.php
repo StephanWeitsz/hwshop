@@ -68,20 +68,96 @@
                         @enderror
                     </div>
                    
+                    <!--Add Address...-->
+                    <div class="form-group">
+                        <label for="Addresss">Addresses</label>
+                        <form action="#">
+                            <div class="form-group">
+
+<!--foreach  user: address get the type and address -->
+
+                                <label for="AddresssHome">Home</label>
+                                <textarea
+                                    class="form-control" 
+                                    cols=80% 
+                                    rows="5" 
+                                    name="AddressHome" 
+                                    id="AddressHome"
+                                    readonly>
+8 Crake Place 
+Kempton Park 
+1619
+                                </textarea>
+                                
+<!--end-->
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="AddresssWork">Work</label>
+                                <textarea
+                                    class="form-control" 
+                                    cols=80% 
+                                    rows="5" 
+                                    name="AddressWork" 
+                                    id="AddressWork"
+                                    readonly>
+9 Crake Place
+Kempton Park
+1619
+                                </textarea>
+                            </div>
+                                
+                            <button type="submit" class="btn btn-primary">Addresses</button>
+                        </form>
+                    </div>
+
+                    <!--Add Contact Numbers...-->
+                    <div class="form-group">
+                        <label for="Contact">Contact Numbers</label>
+                        <form action="#">
+                            <div class="form-group">
+                                <label for="ContactHome">Home</label>
+                                <input type="text"
+                                       name="ContactHome"
+                                       class="form-control"
+                                       id="ContactHome"
+                                       value="(011) 555 1234"
+                                       readonly
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ContactCell">Cell</label>
+                                <input type="text"
+                                    name="ContactCell"
+                                    class="form-control"
+                                    id="ContactCell"
+                                    value="(082) 555 1234"
+                                    readonly
+                                >
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Contacts</button>
+                        </form>
+                    </div>
+
                     <div class="form-group">
                         <label for="note">Admin Note</label>
-                        <input type="text"
-                               name="note"
-                               class="form-control {{$errors->has('note') ? 'is-invalid' : ''}}"
-                               id="note"
-                               value={{$user->note}}
-                        >
+                        <textarea
+                            class="form-control {{$errors->has('note') ? 'is-invalid' : ''}}" 
+                            cols=80% 
+                            rows="10" 
+                            name="note" 
+                            id="note">{{$user->note}}
+                        </textarea> 
 
                         @error('note')
                             <div class="allert alert-danger">{{$message}}</div>
                         @enderror
                     </div>
 
+                    <hr class="text-dark bg-dark"/>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password"
@@ -191,9 +267,8 @@
                                         >
                                             Detach
                                         </button>
-
                                     </form>
-                                    </td> 
+                                </td> 
                               </tr>
                             @endforeach
                           </tbody>

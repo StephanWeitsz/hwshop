@@ -53,6 +53,12 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('admin.index')}}">Admin</a>
             </li> 
+            <li class="nav-item">
+              <form action="/logout" method="post">
+                @csrf
+                <button class="btn btn-danger">Logout</button>
+              </form>
+            </li> 
           @else
             <li class="nav-item">
               <a class="nav-link" href="/login">Login</a>

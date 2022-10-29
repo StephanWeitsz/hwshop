@@ -53,7 +53,7 @@
                       <td>{{$user->created_at->diffForHumans()}}</td>
                       <td>{{$user->updated_at->diffForHumans()}}</td>
                       <td>
-                        @can('view', $user)
+                        @can('delete', $user)
                           <form method="post" action="{{route('user.destroy', $user->id)}}">
                             @csrf
                             @method('DELETE')
