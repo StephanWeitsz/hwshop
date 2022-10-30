@@ -15,9 +15,21 @@ class Address extends Model
         'line3',
         'line4',
         'postalcode',
+        'lat',
+        'long',
     ];
 
-    public function user() {
-        return $this->belongsToMany(User::class)->using(AddressUser::class);
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withPivot('address_type_id');
     }
+
+    /*
+    public function newPivot(Model $parent, array $attributes, $table, $exists) {
+        if ($parent instanceof User) {
+            return new AddressUser($parent, $attributes, $table, $exists);
+        }
+        return parent::newPivot($parent, $attributes, $table, $exists);
+    }
+    */
 }

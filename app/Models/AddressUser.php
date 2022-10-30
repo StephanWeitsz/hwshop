@@ -2,12 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class AddressUser extends pivot
+class AddressUser extends Pivot
 {
     use HasFactory;
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
+
+    public function addressType()
+    {
+        return $this->belongsTo(AddressType::class);
+    }
 }

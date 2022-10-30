@@ -64,8 +64,7 @@ class User extends Authenticatable
 
     public function address() {
         return $this->belongsToMany(Address::class)
-            ->withTimestamps()
-            ->withPivot(['name']);
+            ->withTimestamps();
     }
 
     public function contact() {
@@ -96,5 +95,17 @@ class User extends Authenticatable
         return false;
     }
 
+    public function addresses()
+    {
+        return $this->belongsToMany(Address::class)->withPivot('address_type_id');
+    }
 
+    /*
+    public function newPivot(Model $parent, array $attributes, $table, $exists) {
+        if ($parent instanceof Address) {
+            return new AddressUser($parent, $attributes, $table, $exists);
+        }
+        return parent::newPivot($parent, $attributes, $table, $exists);
+    }
+    */
 }
