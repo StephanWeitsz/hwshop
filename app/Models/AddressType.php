@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Addresstype extends Model
 {
@@ -14,6 +14,6 @@ class Addresstype extends Model
     ];
 
     public function address() {
-        return $this->belongsToMany(Address::class);
+        return $this->hasMany(Address::class);
     }
 }

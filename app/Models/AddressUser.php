@@ -19,8 +19,4 @@ class AddressUser extends Pivot
         return $this->belongsTo(Address::class);
     }
 
-    public function addressType()
-    {
-        return $this->belongsTo(AddressType::class);
-    }
 }

@@ -16,7 +16,6 @@ class CreateAddressUserTable extends Migration
         Schema::create('address_user', function (Blueprint $table) {
             $table->foreignId('address_id')->constraine();
             $table->foreignId('user_id')->constraine();
-            $table->foreignId('address_type_id');
             $table->timestamps();
         });
     }

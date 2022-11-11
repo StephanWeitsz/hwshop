@@ -10,6 +10,7 @@ class Address extends Model
     use HasFactory;
 
     protected $fillable = [
+        'addresstype_id',
         'line1',
         'line2',
         'line3',
@@ -21,15 +22,11 @@ class Address extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('address_type_id');
+        return $this->belongsToMany(User::class);
     }
 
-    /*
-    public function newPivot(Model $parent, array $attributes, $table, $exists) {
-        if ($parent instanceof User) {
-            return new AddressUser($parent, $attributes, $table, $exists);
-        }
-        return parent::newPivot($parent, $attributes, $table, $exists);
+    public function addresstype()
+    {
+        return $this->belongsTo(Addresstype::class);
     }
-    */
 }

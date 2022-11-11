@@ -15,19 +15,22 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
+            //$table->foreignId('addresstype_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->bigInteger('addresstype_id')->unsigned()->nullable();
+            $table->foreign('addresstype_id', 'addresstypes_address_id_fk')->references('id')->on('addresstypes')->onUpdate('RESTRICT')->onDelete('RESTRICT');
             $table->string('line1');
             $table->string('line2');
-            $table->string('line3');
-            $table->string('line4');
+            $table->string('line3')->nullable();
+            $table->string('line4')->nullable();
             $table->string('postalcode');
-            $table->float('lat',10,6)->unsigned()->nullable();
-            $table->float('long',10,6)->unsigned()->nullable();
+            $table->decimal('lat',11,8)->unsigned()->nullable();
+            $table->decimal('long',11,8)->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
     }
 
-    /**
+    /*
      * Reverse the migrations.
      *
      * @return void

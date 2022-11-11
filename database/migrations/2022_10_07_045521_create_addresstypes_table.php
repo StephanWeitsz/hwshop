@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddressTypesTable extends Migration
+class CreateAddresstypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAddressTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('addressTypes', function (Blueprint $table) {
+        Schema::create('addresstypes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateAddressTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('addressTypes');
+        Schema::dropIfExists('addresstypes');
     }
 }

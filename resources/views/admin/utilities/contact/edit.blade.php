@@ -15,7 +15,7 @@
             <div class="col-sm-6">
                 <h1>Edit Role: {{$addresstypes->name}}</h1>
 
-                <form method='post' action="{{route('addresstype.update', $addresstype->id)}}">
+                <form method='post' action="{{route('addresstype.update', $addresstypes->id)}}">
                     @csrf
                     @method('PATCH')
                     <div class="form-group">

@@ -68,54 +68,39 @@
                         @enderror
                     </div>
                    
-                    <!--Add Address...-->
+                    <!--Show Address...-->
                     <div class="form-group">
                         <label for="Addresss">Addresses</label>
-                        <form action="#">
-                            <div class="form-group">
 
-<!--foreach  user: address get the type and address -->
-
-                                <label for="AddresssHome">Home</label>
+                        @foreach($user->address as $ua)
+                            <div class="form-group">                       
+                                <label for="AddresssHome">{{$ua->addresstype->name}}</label>
                                 <textarea
                                     class="form-control" 
-                                    cols=80% 
+                                    cols=80%
                                     rows="5" 
                                     name="AddressHome" 
                                     id="AddressHome"
-                                    readonly>
-8 Crake Place 
-Kempton Park 
-1619
-                                </textarea>
-                                
-<!--end-->
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="AddresssWork">Work</label>
-                                <textarea
-                                    class="form-control" 
-                                    cols=80% 
-                                    rows="5" 
-                                    name="AddressWork" 
-                                    id="AddressWork"
-                                    readonly>
-9 Crake Place
-Kempton Park
-1619
+                                    readonly>                                  
+{{$ua->line1}}
+{{$ua->line2}}
+@if($ua->line3)
+{{$ua->line3}}
+@endif
+@if($ua->line4)
+{{$ua->line4}}
+@endif
+{{$ua->postaladdress}}
                                 </textarea>
                             </div>
-                                
-                            <button type="submit" class="btn btn-primary">Addresses</button>
-                        </form>
+                        @endforeach      
+                        <a href="{{route('address.index', $user)}}" class="btn btn-secondary" role="button" aria-disabled="true">Addresses</a>
                     </div>
 
                     <!--Add Contact Numbers...-->
                     <div class="form-group">
                         <label for="Contact">Contact Numbers</label>
-                        <form action="#">
+                    
                             <div class="form-group">
                                 <label for="ContactHome">Home</label>
                                 <input type="text"
@@ -138,8 +123,8 @@ Kempton Park
                                 >
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Contacts</button>
-                        </form>
+                            <!-- <button type="submit" class="btn btn-primary">Contacts</button> -->
+                    
                     </div>
 
                     <div class="form-group">
@@ -185,6 +170,7 @@ Kempton Park
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{route('users.index')}}" class="btn btn-secondary" role="button" aria-disabled="true">Exit</a>   
                 </form>
             </div>
         </div>

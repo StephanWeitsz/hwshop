@@ -97,15 +97,6 @@ class User extends Authenticatable
 
     public function addresses()
     {
-        return $this->belongsToMany(Address::class)->withPivot('address_type_id');
+        return $this->belongsToMany(Address::class);
     }
-
-    /*
-    public function newPivot(Model $parent, array $attributes, $table, $exists) {
-        if ($parent instanceof Address) {
-            return new AddressUser($parent, $attributes, $table, $exists);
-        }
-        return parent::newPivot($parent, $attributes, $table, $exists);
-    }
-    */
 }

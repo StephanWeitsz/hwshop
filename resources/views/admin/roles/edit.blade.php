@@ -126,6 +126,5 @@
                 @endif
             </div>
         </div>
-        
     @endsection
 </x-admin-master>
