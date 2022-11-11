@@ -81,8 +81,7 @@
                                     rows="5" 
                                     name="AddressHome" 
                                     id="AddressHome"
-                                    readonly>                                  
-{{$ua->line1}}
+                                    readonly>{{$ua->line1}}
 {{$ua->line2}}
 @if($ua->line3)
 {{$ua->line3}}
@@ -90,8 +89,7 @@
 @if($ua->line4)
 {{$ua->line4}}
 @endif
-{{$ua->postaladdress}}
-                                </textarea>
+{{$ua->postalcode}}</textarea>
                             </div>
                         @endforeach      
                         <a href="{{route('address.index', $user)}}" class="btn btn-secondary" role="button" aria-disabled="true">Addresses</a>
