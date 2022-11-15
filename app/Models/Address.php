@@ -20,13 +20,11 @@ class Address extends Model
         'long',
     ];
 
-    public function users()
-    {
+    public function users() {
         return $this->belongsToMany(User::class);
-    }
+    } //public function users() {
 
-    public function addresstype()
-    {
+    public function addresstype() {
         return $this->belongsTo(Addresstype::class);
-    }
-}
+    } //public function addresstype() {
+} //class Address extends Model

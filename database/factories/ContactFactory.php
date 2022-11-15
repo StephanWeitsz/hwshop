@@ -14,6 +14,7 @@ class ContactFactory extends Factory
     public function definition()
     {
         return [
+            'contacttype_id' => 1,
             'number' => $this->faker->e164PhoneNumber(),
         ];
     }

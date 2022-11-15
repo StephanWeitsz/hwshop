@@ -15,5 +15,5 @@ class Addresstype extends Model
 
     public function address() {
         return $this->hasMany(Address::class);
-    }
-}
+    } //public function address() {
+} //class Addresstype extends Model

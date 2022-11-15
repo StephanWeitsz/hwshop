@@ -15,11 +15,9 @@ class Post extends Model
         'body',
     ];
 
-
-
     public function user() {
         return $this->belongsTo(User::class);
-    }
+    } //public function user() {
 
     /*
     public function images() {
@@ -38,9 +36,9 @@ class Post extends Model
     public function getPostImageAttribute($value) {
         if(strpos($value, 'https://') !== false || strpos('$value', 'http://') !== false) {
             return asset($value);
-        }
+        } //if(strpos($value, 'https://') !== false || strpos('$value', 'http://') !== false) {
         else {
             return asset('storage/' . $value);
-        }
-    } 
-}
+        } //else
+    } //public function getPostImageAttribute($value) {
+} //class Post extends Model

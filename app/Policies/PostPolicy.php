@@ -19,7 +19,7 @@ class PostPolicy
     public function viewAny(User $user)
     {
         //
-    }
+    } //public function viewAny(User $user)
 
     /**
      * Determine whether the user can view the model.
@@ -32,11 +32,11 @@ class PostPolicy
     {
         if($user->userHasRole('admin')) {
             return true;
-        }
+        } //if($user->userHasRole('admin')) {
         else {
             return $user->id === $post->user_id;
-        }
-    }
+        } //else
+    } //public function view(User $user, Post $post)
 
     /**
      * Determine whether the user can create models.
@@ -47,7 +47,7 @@ class PostPolicy
     public function create(User $user)
     {
         return $user->is($user);
-    }
+    } //public function create(User $user)
 
     /**
      * Determine whether the user can update the model.
@@ -58,8 +58,13 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
-    }
+        if($user->userHasRole('admin')) {
+            return true;
+        } //if($user->userHasRole('admin')) {
+        else {
+            return $user->id === $post->user_id;
+        } //else
+    } //public function update(User $user, Post $post)
 
     /**
      * Determine whether the user can delete the model.
@@ -72,11 +77,11 @@ class PostPolicy
     {
         if($user->userHasRole('admin')) {
             return true;
-        }
+        } //if($user->userHasRole('admin')) {
         else {
             return $user->id === $post->user_id;
-        }
-    }
+        } //else
+    } //public function delete(User $user, Post $post)
 
     /**
      * Determine whether the user can restore the model.
@@ -88,7 +93,7 @@ class PostPolicy
     public function restore(User $user, Post $post)
     {
         //
-    }
+    } //public function restore(User $user, Post $post)
 
     /**
      * Determine whether the user can permanently delete the model.
@@ -100,5 +105,5 @@ class PostPolicy
     public function forceDelete(User $user, Post $post)
     {
         //
-    }
-}
+    } //public function forceDelete(User $user, Post $post)
+} //class PostPolicy

@@ -9,7 +9,7 @@
         <a class="collapse-item" href="">Import Products</a>
         <h6 class="collapse-header">Refrance Tables:</h6>
         <a class="collapse-item" href="{{route('addresstype.index')}}">Address Types</a>
-        <a class="collapse-item" href="">Contact Types</a>
+        <a class="collapse-item" href="{{route('contacttype.index')}}">Contact Types</a>
       </div>
     </div>
   </li>

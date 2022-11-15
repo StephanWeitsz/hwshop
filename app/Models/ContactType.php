@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class ContactType extends Model
+class Contacttype extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,6 @@ class ContactType extends Model
     ];
 
     public function contact() {
-        return $this->belongsTo(contact::class);
-    }
-}
+        return $this->hasMany(Contact::class);
+    } //public function contact() {
+} //class Contacttype extends Model

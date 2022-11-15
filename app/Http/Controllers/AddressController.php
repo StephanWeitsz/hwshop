@@ -56,8 +56,7 @@ class AddressController extends Controller
         $addresstypes = Addresstype::all();
         return view('admin.address.create', ['user'=>$user, 'addresstypes'=>$addresstypes]);
     }
-
-    
+  
     public function store(Request $request, User $user) {
         
         //$this->authorize('create', Address::class);
@@ -77,7 +76,7 @@ class AddressController extends Controller
         $validate_addr_type = $user->address()->where('addresstype_id', $at_id)->get();
         $allswell = true;
         foreach($validate_addr_type as $type) {
-            if($type->addresstype_id  == $at_id) {
+            if($type->addresstype_id == $at_id) {
                 $allswell = false;
             }
         }

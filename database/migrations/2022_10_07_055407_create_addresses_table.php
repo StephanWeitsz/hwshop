@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            //$table->foreignId('addresstype_id')->nullable()->constrained()->cascadeOnDelete();
             $table->bigInteger('addresstype_id')->unsigned()->nullable();
             $table->foreign('addresstype_id', 'addresstypes_address_id_fk')->references('id')->on('addresstypes')->onUpdate('RESTRICT')->onDelete('RESTRICT');
             $table->string('line1');

@@ -12,11 +12,9 @@ class AddressUser extends Pivot
 
     public function user() {
         return $this->belongsTo(User::class);
-    }
+    } //public function user() {
 
-    public function address()
-    {
+    public function address() {
         return $this->belongsTo(Address::class);
-    }
-
-}
+    } //public function address() {
+} //class AddressUser extends Pivot

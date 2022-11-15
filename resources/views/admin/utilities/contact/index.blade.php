@@ -1,14 +1,14 @@
 <x-admin-master>
     @section('content')
-      <h1>Maintain Address Types</h1>
+      <h1>Maintain Contact Types</h1>
 
       <div class="row">
-        @if (Session::has('address_type_delete_message'))
-          <div class="alert alert-danger">{{Session::get('address_type_delete_message')}}</div>
-        @elseif (Session::has('address_type_create_message'))
-          <div class="alert alert-success">{{Session::get('address_type_create_message')}}</div>
-        @elseif (Session::has('address_type_update_message'))
-          <div class="alert alert-success">{{Session::get('address_type_update_message')}}</div>
+        @if (Session::has('contact_type_delete_message'))
+          <div class="alert alert-danger">{{Session::get('contact_type_delete_message')}}</div>
+        @elseif (Session::has('contact_type_create_message'))
+          <div class="alert alert-success">{{Session::get('contact_type_create_message')}}</div>
+        @elseif (Session::has('contact_type_update_message'))
+          <div class="alert alert-success">{{Session::get('contact_type_update_message')}}</div>
         @else
   
         @endif
@@ -16,7 +16,7 @@
           
       <div class="row">
         <div class="col-sm-3">
-          <form method="post" action="{{route('addresstype.store')}}">
+          <form method="post" action="{{route('contacttype.store')}}">
             @csrf
             <div class="form-group">
               <label for="name">Name</label>  
@@ -38,7 +38,7 @@
         <div class="col-sm-9">
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Address Type List</h6>
+              <h6 class="m-0 font-weight-bold text-primary">contact Type List</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -58,12 +58,12 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                    @foreach ($ats as $at)                      
+                    @foreach ($cts as $ct)                      
                       <tr>
-                        <td>{{$at->id}}</td>
-                        <td><a href="{{route('addresstype.edit', $at->id)}}">{{$at->name}}</a></td>
+                        <td>{{$ct->id}}</td>
+                        <td><a href="{{route('contacttype.edit', $ct->id)}}">{{$ct->name}}</a></td>
                         <td>
-                          <form method="post" action="{{route('addresstype.destroy', $at->id)}}">
+                          <form method="post" action="{{route('contacttype.destroy', $ct->id)}}">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">Delete</button>

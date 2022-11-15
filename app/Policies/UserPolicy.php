@@ -18,7 +18,7 @@ class UserPolicy
     public function viewAny(User $user)
     {
         //
-    }
+    } //public function viewAny(User $user)
 
     /**
      * Determine whether the user can view the model.
@@ -31,14 +31,14 @@ class UserPolicy
     {
         if($user->userHasRole('admin')) {
             return true;
-        }
-        elseif($user->userHasRole('moderator')) {
+        } //if($user->userHasRole('admin')) {
+        elseif($user->userHasRole('manager')) {
             return true;
-        }
+        } //elseif($user->userHasRole('manager')) {
         else {
             return $user->id == $model->id;
-        }
-    }
+        } //esle
+    } //public function view(User $user, User $model)
 
     /**
      * Determine whether the user can create models.
@@ -49,7 +49,7 @@ class UserPolicy
     public function create(User $user)
     {
         return $user->is($user);
-    }
+    } //public function create(User $user)
 
     /**
      * Determine whether the user can update the model.
@@ -62,14 +62,14 @@ class UserPolicy
     {
         if($user->userHasRole('admin')) {
             return true;
-        }
-        elseif($user->userHasRole('moderator')) {
+        } //if($user->userHasRole('admin')) {
+        elseif($user->userHasRole('manager')) {
             return true;
-        }
+        } //elseif($user->userHasRole('moderator')) {
         else {
             return $user->id == $model->id;
-        }
-    }
+        } //else
+    } //public function update(User $user, User $model)
 
     /**
      * Determine whether the user can delete the model.
@@ -82,14 +82,14 @@ class UserPolicy
     {
         if($user->userHasRole('admin')) {
             return true;
-        }
-        elseif($user->userHasRole('moderator')) {
+        } //if($user->userHasRole('admin')) {
+        elseif($user->userHasRole('manager')) {
             return true;
-        }
+        } //elseif($user->userHasRole('manager')) {
         else {
             return $user->id == $model->id;
-        }
-    }
+        } //else
+    } //public function delete(User $user, User $model)
 
     /**
      * Determine whether the user can restore the model.
@@ -101,7 +101,7 @@ class UserPolicy
     public function restore(User $user, User $model)
     {
         //
-    }
+    } //public function restore(User $user, User $model)
 
     /**
      * Determine whether the user can permanently delete the model.
@@ -113,5 +113,5 @@ class UserPolicy
     public function forceDelete(User $user, User $model)
     {
         //
-    }
-}
+    } //public function forceDelete(User $user, User $model)
+} //class UserPolicy
