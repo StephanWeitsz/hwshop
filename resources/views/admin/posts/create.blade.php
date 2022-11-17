@@ -13,7 +13,7 @@
                         placeholder="Enter title">
             </div>
             <div class="form-group">
-                <label for="file">File</label>
+                <label for="file">Post Banner</label>
                 <input type="file"
                         name="post_image"
                         class="form-control-file"
@@ -27,6 +27,15 @@
                             cols="30"
                             rows="10"></textarea>
             </div>
+
+            <div class="form-group">
+                <label for="product_image">Product Image</label>
+                <input type="file"
+                        name="product_image"
+                        class="form-control-file"
+                        id="product_image">
+            </div>
+
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

@@ -58,12 +58,10 @@
           </div>         
         </div>
 
-        <div class="card shadow mb-4">
-          <div class="class="card-body">
-            <a href="{{route('contact.create', $user->id)}}" class="btn btn-primary">Add Contact Number</a>
-            <a href="{{route('user.profile.show', $user->id)}}" class="btn btn-secondary" role="button" aria-disabled="true">Exit</a>
-          </div>
-        </div>  
+        <div class="card-body">
+          <a href="{{route('contact.create', $user->id)}}" class="btn btn-primary">Add Contact Number</a>
+          <a href="{{route('user.profile.show', $user->id)}}" class="btn btn-secondary" role="button" aria-disabled="true">Exit</a>
+        </div>
     @endsection
 
     @section('scripts')

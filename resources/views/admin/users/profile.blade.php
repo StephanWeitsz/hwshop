@@ -61,16 +61,17 @@
                     <!--Show Address...-->
                     <div class="form-group">
                         <label for="Addresss">Addresses</label>
-                        @foreach($user->address as $ua)
-                            <div class="form-group">                       
-                                <label for="Addresss{{$ua->addresstype->name}}">{{$ua->addresstype->name}}</label>
-                                <textarea
-                                    class="form-control" 
-                                    cols=80%
-                                    rows="5" 
-                                    name="Address{{$ua->addresstype->name}}" 
-                                    id="Address{{$ua->addresstype->name}}"
-                                    readonly>{{$ua->line1}}
+                        @if ($user->address->isNotEmpty())
+                            @foreach($user->address as $ua)
+                                <div class="form-group">                       
+                                    <label for="Addresss{{$ua->addresstype->name}}">{{$ua->addresstype->name}}</label>
+                                    <textarea
+                                        class="form-control" 
+                                        cols=80%
+                                        rows="5" 
+                                        name="Address{{$ua->addresstype->name}}" 
+                                        id="Address{{$ua->addresstype->name}}"
+                                        readonly>{{$ua->line1}}
 {{$ua->line2}}
 @if($ua->line3)
 {{$ua->line3}}
@@ -79,27 +80,32 @@
 {{$ua->line4}}
 @endif
 {{$ua->postalcode}}</textarea>
-                            </div>
-                        @endforeach
-                        <br>
+                                </div>
+                            @endforeach  
+                        @else
+                           <p><strong>No Address Captured</strong></p>
+                        @endif
                         <a href="{{route('address.index', $user)}}" class="btn btn-secondary" role="button" aria-disabled="true">Addresses</a>
                     </div>
                     <!--Add Contact Numbers...-->
                     <div class="form-group">
                         <label for="Contact">Contact Numbers</label>
-                        @foreach($user->contact as $uc)
-                            <div class="form-group">
-                                <label for="Contact{{$uc->contacttype->name}}">{{$uc->contacttype->name}}</label>
-                                <input type="text"
-                                       name="Contact{{$uc->contacttype->name}}"
-                                       class="form-control"
-                                       id="Contact{{$uc->contacttype->name}}"
-                                       value="{{$uc->number}}"
-                                       readonly
-                                >
-                            </div>
-                        @endforeach
-                        <br>
+                        @if ($user->contact->isNotEmpty())
+                            @foreach($user->contact as $uc)
+                                <div class="form-group">
+                                    <label for="Contact{{$uc->contacttype->name}}">{{$uc->contacttype->name}}</label>
+                                    <input type="text"
+                                        name="Contact{{$uc->contacttype->name}}"
+                                        class="form-control"
+                                        id="Contact{{$uc->contacttype->name}}"
+                                        value="{{$uc->number}}"
+                                        readonly
+                                    >
+                                </div>
+                            @endforeach
+                        @else
+                            <p><strong>No Contact Numbers Captured</strong></p> 
+                        @endif    
                         <a href="{{route('contact.index', $user)}}" class="btn btn-secondary" role="button" aria-disabled="true">Contact</a>
                     </div>
                     <div class="form-group">

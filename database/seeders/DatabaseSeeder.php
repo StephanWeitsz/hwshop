@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
         $this->seed_addresstypes();
         $this->seed_contacttypes();
 
-        $this->seed_myuser();
+        $this->seed_admin_user();
+        $this->seed_my_user();
         $this->seed_users();
 
     }
@@ -137,7 +138,7 @@ class DatabaseSeeder extends Seeder
         Contacttype::create(['name'=>'Cell']);
     }
 
-    public function seed_myuser() {
+    public function seed_admin_user() {
         User::create(['username'=>'admin',
                         'Name'=>'Administrator',
                         'email'=>'noreply@hwshop.co.za',
@@ -145,6 +146,18 @@ class DatabaseSeeder extends Seeder
                     ]);
 
         $user = User::findOrFail(1);
+        $role = Role::findOrFail(1);
+        $user->roles()->attach($role);            
+    }
+
+    public function seed_my_user() {
+        User::create(['username'=>'stevewe',
+                        'Name'=>'Stephan Weitsz',
+                        'email'=>'stevewe@me.com',
+                        'password'=>'Cl0ne@2022'
+                    ]);
+
+        $user = User::findOrFail(2);
         $role = Role::findOrFail(1);
         $user->roles()->attach($role);            
     }

@@ -1,10 +1,6 @@
 <x-home-master>
 
 @section('content')
-    <h1 class="my-4">Page Heading
-        <small>Secondary Text</small>
-    </h1>
-
     <!-- Blog Post -->
     @foreach ($posts as $post)
       <div class="card mb-4">
@@ -15,7 +11,11 @@
           <a href="{{route('post', $post->id)}}" class="btn btn-primary">Read More &rarr;</a>
         </div>
         <div class="card-footer text-muted">
-          Posted on {{$post->created_at->diffForHumans()}} by {{$post->user_id}}
+          @if ($post->user)
+            Posted on {{$post->created_at->diffForHumans()}} by {{$post->user->name}}   
+          @else
+            Posted on {{$post->created_at->diffForHumans()}} by DELETED user {{$post->user_id}}
+          @endif 
         </div>
       </div>
     @endforeach

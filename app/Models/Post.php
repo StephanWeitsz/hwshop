@@ -10,6 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
+        'product_id',
         'title',
         'post_image',
         'body',
@@ -18,8 +19,13 @@ class Post extends Model
     public function user() {
         return $this->belongsTo(User::class);
     } //public function user() {
+        
+/*
+    public function product() {
+        return $this->belongsTo(Product::class);
+    } // public function product() {
 
-    /*
+    
     public function images() {
         return $this->morphMany('App\Images', 'imageable');
     }
@@ -27,7 +33,7 @@ class Post extends Model
     public function tags() {
         return $this->morphToMany('App\Tag', 'tagable');
     }
-    */
+*/
 
     //public function setPostImageAttribute($value) {
         //$this->attributes['post_image'] = asset($value);

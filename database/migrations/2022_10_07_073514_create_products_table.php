@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constraint()->onDelete('cascade');
-            $table->integer('product_id')->unsigned()->index();
-            $table->string('title');
-            $table->text('post_image')->nullable();
-            $table->text('body');
+        Schema::create('products', function (Blueprint $table) {
+            $table->id('product_id');
+            $table->string('name')->index();
+            $table->string('description');
+            $table->string('about');
+            $table->string('price');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +31,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('products');
     }
-}
+};

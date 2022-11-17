@@ -85,11 +85,9 @@
           </div>         
         </div>
 
-        <div class="card shadow mb-4">
-          <div class="class="card-body">
-            <a href="{{route('address.create', $user->id)}}" class="btn btn-primary">Add Address</a>
-            <a href="{{route('user.profile.show', $user->id)}}" class="btn btn-secondary" role="button" aria-disabled="true">Exit</a>
-          </div>
+        <div class="card-body">
+          <a href="{{route('address.create', $user->id)}}" class="btn btn-primary">Add Address</a>
+          <a href="{{route('user.profile.show', $user->id)}}" class="btn btn-secondary" role="button" aria-disabled="true">Exit</a>
         </div>  
     @endsection
 
