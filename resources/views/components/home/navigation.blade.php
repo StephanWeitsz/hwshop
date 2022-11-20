@@ -17,8 +17,8 @@
                 <span class="sr-only">{{ (request()->is('about')) ? ' (current) ' : '' }}</span>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Products</a>
-                <span class="sr-only">{{ (request()->is('Product')) ? ' (current) ' : '' }}</span>
+            <a class="nav-link" href="{{route('products')}}">Products</a>
+                <span class="sr-only">{{ (request()->is('Products')) ? ' (current) ' : '' }}</span>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Orders</a>

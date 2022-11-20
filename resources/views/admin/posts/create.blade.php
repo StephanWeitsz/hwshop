@@ -13,11 +13,25 @@
                         placeholder="Enter title">
             </div>
             <div class="form-group">
-                <label for="file">Post Banner</label>
+                <label for="post_banner">Post Banner</label>
                 <input type="file"
-                        name="post_image"
+                        name="post_banner"
                         class="form-control-file"
-                        id="post_image">
+                        id="post_banner">
+            </div>
+
+            <div class="form-group">
+                <label for="product">Link to a product (optional)</label>
+                <select name="product"
+                        class="form-control"
+                        id="product"
+                        aria-describedby="">
+    
+                    <option value="0">All Products</option>    
+                    @foreach($products as $product)
+                        <option value="{{$product->id}}">{{$product->name}}</option>
+                    @endforeach       
+                </select>
             </div>
 
             <div class="form-group">
@@ -29,13 +43,13 @@
             </div>
 
             <div class="form-group">
-                <label for="product_image">Product Image</label>
+                <label for="post_image[]">Post Image</label>
                 <input type="file"
-                        name="product_image"
+                        name="post_image[]"
                         class="form-control-file"
-                        id="product_image">
+                        id="post_image[]"
+                        multiple>
             </div>
-
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

@@ -23,39 +23,22 @@
     <div class="container">
       <x-home.hero></x-home.hero>
     
-      @if(request()->is('/'))
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="my-4">Announcements and Specials
-              <small>: Take Note</small>
-            </h1>
-          </div>
-        </div>
-      @endif
-    
       <!-- row -->
       <div class="row">
         <!-- Main Body Column -->
-        <div class="col-md-8">
-          <!-- Blog Entries Column -->
-          @yield('content')
+        <div class="col-md-6">
+          <!-- Product Image Column -->
+          @yield('images')
         </div>
-
-        <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
-          <!-- Search Widget -->
-          <x-home.widget.search></x-home.widget.search>
-
-          <!-- top products Widget -->
-          <x-home.widget.product></x-home.widget.product>
-        
-          <!-- Side Widget -->
-          {{--<x-home.widget.side></x-home.widget.side>--}}
+          <!-- Product Detail Column -->
+          @yield('content')
         </div>
       </div>
       <!-- /.row -->
     </div>
     <!-- /.container -->
+
     <x-footer-master></x-footer-master>
 
     <!-- Bootstrap core JavaScript -->

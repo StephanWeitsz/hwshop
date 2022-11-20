@@ -23,13 +23,35 @@
     <hr>
       
     <!-- Preview Image -->
-    <img class="img-fluid rounded" src="{{$post->post_image}}" alt="">
+    <img class="img-fluid rounded" src="{{$post->post_banner}}" alt="">
       
     <hr>
-              
+      @if($post->product_id)
+        <p> This post is related to the product : <strong>{{$post->product->name}}</strong></p>
+      @else
+        <p> This post is related to the <strong>ALL</strong> products</p>
+      @endif
+    <hr>
+
     <!-- Post Content -->
     <p>{{$post->body}}</p>
 
+    <hr>
+
+    @if($post->images)
+      <div class="row">
+        @foreach($post->images as $image)
+          <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+            <img
+              src="{{asset($image->filename)}}"
+              class="w-50 shadow-1-strong rounded mb-4"
+              alt=""
+            />
+          </div>
+        @endforeach
+      </div>
+    @endif
+    
     <hr>
       
     <!-- Comments Form -->

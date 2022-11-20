@@ -7,7 +7,13 @@
         @elseif (Session::has('post_create_message'))
             <div class="alert alert-success">{{Session::get('post_create_message')}}</div>
         @elseif (Session::has('post_update_message'))
-            <div class="alert alert-success">{{Session::get('post_update_message')}}</div>    
+            <div class="alert alert-success">{{Session::get('post_update_message')}}</div>
+        @else
+            
+        @endif
+
+        @if (Session::has('post_image_update_message'))
+          <div class="alert alert-success">{{Session::get('post_image_update_message')}}</div>
         @else
             
         @endif
@@ -23,6 +29,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Owner</th>
+                    <th>Product</th>
                     <th>Title</th>
                     <th>Image</th>
                     <th>Created</th>
@@ -34,6 +41,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Owner</th>
+                    <th>Product</th>
                     <th>Title</th>
                     <th>Image</th>
                     <th>Created</th>
@@ -46,15 +54,22 @@
                     <tr>
                       <td>{{$post->id}}</td>
                       <td>
-                          @if ($post->user)
-                            {{$post->user->name}}
-                          @else
-                            DELETED
-                          @endif
+                        @if ($post->user)
+                          {{$post->user->name}}
+                        @else
+                          DELETED
+                        @endif
+                      </td>
+                      <td>
+                        @if($post->product)
+                          {{$post->product->name}}
+                        @else
+                          All Products
+                        @endif
                       </td>
                       <td><a href="{{route('post.edit', $post->id)}}">{{$post->title}}</a></td>
                       <td>
-                        <img height="50px" src="{{$post->post_image}}" alt="">
+                        <img height="50px" src="{{$post->post_banner}}" alt="">
                       </td>
                       <td>{{$post->created_at->diffForHumans()}}</td>
                       <td>{{$post->updated_at->diffForHumans()}}</td>

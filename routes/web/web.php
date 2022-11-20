@@ -7,6 +7,9 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/products', [App\Http\Controllers\HomeController::class, 'products'])->name('products');
+Route::get('/products/{product}', [App\Http\Controllers\HomeController::class, 'product'])->name('product');
+
 
 Route::middleware('auth')->group(function() {
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');

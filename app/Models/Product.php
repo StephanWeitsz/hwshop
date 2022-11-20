@@ -16,15 +16,19 @@ class Product extends Model
         'price',
     ];
 
+    public function post() {
+	    return $this->belongsTo(Posts::class);
+    }
+
     public function order() {
-	    return $this->hasMany('App\Orders');
+	    return $this->hasMany(Orders::class);
     }
 
     public function images() {
-	    return $this->morphMany('App\Images', 'imageable');
+	    return $this->morphMany('App\Models\Images', 'imageable');
     }
 
     public function tags() {
-	    return $this->morphToMany('App\Tag', 'tagable');
+	    return $this->morphToMany('App\Models\Tag', 'tagable');
     }
 }

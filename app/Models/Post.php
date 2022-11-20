@@ -12,7 +12,7 @@ class Post extends Model
     protected $fillable = [
         'product_id',
         'title',
-        'post_image',
+        'post_banner',
         'body',
     ];
 
@@ -20,23 +20,22 @@ class Post extends Model
         return $this->belongsTo(User::class);
     } //public function user() {
         
-/*
     public function product() {
         return $this->belongsTo(Product::class);
     } // public function product() {
 
-    
     public function images() {
-        return $this->morphMany('App\Images', 'imageable');
+        return $this->morphMany('App\Models\Images', 'imageable');
     }
-    
+   
+    /*
     public function tags() {
         return $this->morphToMany('App\Tag', 'tagable');
     }
-*/
+    */
 
     //public function setPostImageAttribute($value) {
-        //$this->attributes['post_image'] = asset($value);
+        //$this->attributes['post_banner'] = asset($value);
     //} 
 
     public function getPostImageAttribute($value) {

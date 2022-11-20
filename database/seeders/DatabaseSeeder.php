@@ -4,10 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Product;
 use App\Models\Permission;
 use App\Models\Addresstype;
-use App\Models\Contacttype;
 
+use App\Models\Contacttype;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -27,6 +28,8 @@ class DatabaseSeeder extends Seeder
         $this->seed_addresstypes();
         $this->seed_contacttypes();
 
+        $this->seed_products();
+
         $this->seed_admin_user();
         $this->seed_my_user();
         $this->seed_users();
@@ -34,6 +37,8 @@ class DatabaseSeeder extends Seeder
     }
 
     public function clearDB() {
+        DB::table('products')->truncate();
+
         DB::table('address_user')->truncate();
         DB::table('addresses')->truncate();
         DB::table('addresstypes')->truncate();
@@ -136,6 +141,12 @@ class DatabaseSeeder extends Seeder
         Contacttype::create(['name'=>'Home']);
         Contacttype::create(['name'=>'Work']);
         Contacttype::create(['name'=>'Cell']);
+    }
+
+    public function seed_products() {
+        Product::create(['name'=>'Product 1', 'description'=>'This is a test product 1', 'about'=>'test product', 'price'=>'R50']);
+        Product::create(['name'=>'Product 2', 'description'=>'This is a test product 2', 'about'=>'test product', 'price'=>'R40']);
+        Product::create(['name'=>'Product 3', 'description'=>'This is a test product 3', 'about'=>'test product', 'price'=>'R65.20']);
     }
 
     public function seed_admin_user() {
