@@ -71,6 +71,12 @@
 
                     <p class="text-truncate mb-4 mb-md-0">
                       {{$product->description}}
+
+                      <ul>
+                      @foreach($product->product_item as $item)
+                        <li><a href="{{route('product_item', [$product, $item])}}" aria-disabled="true">{{$item->name}}</a></li>
+                      @endforeach
+                      <ul>
                     </p>
                   </div>
 

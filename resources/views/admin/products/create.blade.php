@@ -14,37 +14,28 @@
             </div>
 
             <div class="form-group">
+                <label for="name">Type</label>
+                <input type="text"
+                        name="type"
+                        class="form-control"
+                        id="type"
+                        aria-describedby=""
+                        placeholder="Enter product type">
+            </div>
+
+            <div class="form-group">
                 <label for="description">Description</label>
                 <textarea name="description"
                             class="form-control"
                             id="description"
                             cols="30"
-                            rows="20"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="about">About</label>
-                <textarea name="about"
-                            class="form-control"
-                            id="about"
-                            cols="30"
-                            rows="15">About this product</textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input type="text"
-                       name="price"
-                       class="form-control"
-                       id="price"
-                       aria-describedby=""
-                       placeholder="Enter product price">
+                            rows="6"></textarea>
             </div>
 
             <div class="form-group">
                 <label for="product_image[]">Product Images</label>
                 <input type="file"
-                        name="pproduct_image[]"
+                        name="product_image[]"
                         class="form-control-file"
                         id="product_image[]"
                         multiple>

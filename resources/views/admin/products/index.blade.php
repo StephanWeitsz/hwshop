@@ -31,7 +31,6 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Price</th>
                     <th>Created</th>
                     <th>Updated</th>
                     <th>Delete</th>
@@ -43,7 +42,6 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Price</th>
                     <th>Created</th>
                     <th>Updated</th>
                     <th>Delete</th>
@@ -67,7 +65,6 @@
                         <a href="{{route('product.edit', $product->id)}}">{{$product->name}}</a>
                       </td>
                       <td>{{$product->description}}</td>
-                      <td>{{$product->price}}</td>
                       <td>{{$product->created_at->diffForHumans()}}</td>
                       <td>{{$product->updated_at->diffForHumans()}}</td>
                       <td>

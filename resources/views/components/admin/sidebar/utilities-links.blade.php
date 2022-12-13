@@ -6,7 +6,7 @@
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Imports:</h6>
-        <a class="collapse-item" href="">Import Products</a>
+        <a class="collapse-item" href="{{route('product_import')}}">Import Products</a>
         <h6 class="collapse-header">Refrance Tables:</h6>
         <a class="collapse-item" href="{{route('addresstype.index')}}">Address Types</a>
         <a class="collapse-item" href="{{route('contacttype.index')}}">Contact Types</a>

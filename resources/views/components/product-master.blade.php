@@ -26,11 +26,11 @@
       <!-- row -->
       <div class="row">
         <!-- Main Body Column -->
-        <div class="col-md-6">
+        <div class="col-md-4">
           <!-- Product Image Column -->
           @yield('images')
         </div>
-        <div class="col-md-4">
+        <div class="col-md-8">
           <!-- Product Detail Column -->
           @yield('content')
         </div>

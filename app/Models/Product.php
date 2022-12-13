@@ -12,16 +12,19 @@ class Product extends Model
     protected $fillable = [
         'name',
         'description',
-        'about',
-        'price',
+        'type'
     ];
 
     public function post() {
 	    return $this->belongsTo(Posts::class);
     }
 
+    public function product_item() {
+	    return $this->hasMany(Product_item::class);
+    }
+
     public function order() {
-	    return $this->hasMany(Orders::class);
+	    return $this->hasMany(Order::class);
     }
 
     public function images() {

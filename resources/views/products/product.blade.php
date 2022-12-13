@@ -53,10 +53,20 @@
                 <hr>
                 <h2>Product Description</h2>
                 <p>{{$product->description}}</p>
-                <h2>About this product</h2>
-                <p>{{$product->about}}</p>
-                <hr>
-                Price : {{$product->price}}
+
+                @if($product->type)
+                    <p><strong>{{$product->type}}</strong></p> 
+                @endif
+
+                @foreach($product->product_item as $item)
+                    <hr>    
+                    <h2>{{$item->name}}</h2>
+                    <p>{{$item->about}}</p>
+                    
+                    @foreach($item->product_item_element as $element)
+                        {{$element->size}} : {{$element->price}}<br>       
+                    @endforeach
+                @endforeach
             </div>
         </div>        
     @endsection

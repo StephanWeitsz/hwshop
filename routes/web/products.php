@@ -18,6 +18,12 @@ Route::middleware(['auth'])->group(function() {
     //Delete
     Route::delete('/products/{product}/destroy', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product.destroy');
 
+    //import
+    Route::get('/import-products',[App\Http\Controllers\ProductController::class, 'importProduct'])->name('product_import');
+
+    //upload
+    Route::post('/upload-products',[App\Http\Controllers\ProductController::class, 'uploadProduct'])->name('product_upload');
+
 });
 
 
